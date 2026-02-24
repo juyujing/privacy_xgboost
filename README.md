@@ -1,4 +1,4 @@
-# MIMIC-IV AKI Prediction Pipeline
+# Pipeline
 
 ## File Structure
 
@@ -6,7 +6,6 @@
 * `icu.py` : Processes MIMIC-IV ICU data and generates the `icu` dataset.
 * `train.py` : Tunes hyperparameters (Optuna) and trains the model (XGBoost).
 * `processed_data/` : Output directory for the generated `.parquet` datasets (Train/Tune/Test).
-* `checkpoints_*/` : Output directory for XGBoost training checkpoints.
 * `best_params_*.json` : Saved best hyperparameters from Optuna.
 * `xgboost_*_best_model_iter*.json` : The final trained XGBoost model.
 
