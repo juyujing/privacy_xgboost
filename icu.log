@@ -1,0 +1,172 @@
+(Ciallo~(∠・ω<)⌒☆) [yujingju@c0901a-s25 ML]$ python icu.py 
+
+ICU dataset generation completed. Total samples: 5442122
+AKI label distribution: 
+shape: (2, 2)
+┌──────────────────┬─────────┐
+│ future_aki_label ┆ count   │
+│ ---              ┆ ---     │
+│ i32              ┆ u32     │
+╞══════════════════╪═════════╡
+│ 0                ┆ 4025419 │
+│ 1                ┆ 1416703 │
+└──────────────────┴─────────┘
+ICU dataset split (Train:0.7, Tune:0.15, Test:0.15)...
+ICU TRAIN set saved to: processed_data/icu_train.parquet (Samples: 3793838, Patients: 22014)
+ICU TUNE set saved to: processed_data/icu_tune.parquet (Samples: 822917, Patients: 4718)
+ICU TEST set saved to: processed_data/icu_test.parquet (Samples: 825367, Patients: 4718)
+
+(Ciallo~(∠・ω<)⌒☆) [yujingju@c0901a-s25 ML]$ python train.py 
+ICU module training...
+Loaded TRAIN dataset: processed_data/icu_train.parquet
+Loaded TUNE dataset: processed_data/icu_tune.parquet
+Loaded TEST dataset: processed_data/icu_test.parquet
+
+Sample distribution: Negative/Positive sample ratio = 2.83
+
+Optuna hyperparameter tuning...
+[I 2026-02-23 02:08:33,967] A new study created in memory with name: no-name-6600072d-7f1f-4e46-8849-e48fd7a70954
+[I 2026-02-23 02:08:40,181] Trial 0 finished with value: 0.6766018412515075 and parameters: {'learning_rate': 0.024689348122890913, 'max_depth': 4, 'min_child_weight': 5, 'subsample': 0.8115160612823837, 'colsample_bytree': 0.7899635530810759, 'gamma': 2.3751968258547613}. Best is trial 0 with value: 0.6766018412515075.
+[I 2026-02-23 02:08:41,702] Trial 1 finished with value: 0.6960756191216659 and parameters: {'learning_rate': 0.06983954475240481, 'max_depth': 3, 'min_child_weight': 9, 'subsample': 0.9501244193094358, 'colsample_bytree': 0.7000109049185856, 'gamma': 1.1175438213558357}. Best is trial 1 with value: 0.6960756191216659.
+[I 2026-02-23 02:08:42,002] Trial 2 finished with value: 0.6941096441322596 and parameters: {'learning_rate': 0.033664241988603426, 'max_depth': 8, 'min_child_weight': 8, 'subsample': 0.6741732611875474, 'colsample_bytree': 0.6358154265927239, 'gamma': 0.8446391699666711}. Best is trial 1 with value: 0.6960756191216659.
+[I 2026-02-23 02:08:42,415] Trial 3 finished with value: 0.6943698542323897 and parameters: {'learning_rate': 0.03542143731741329, 'max_depth': 9, 'min_child_weight': 10, 'subsample': 0.7562309461708941, 'colsample_bytree': 0.9253741650709196, 'gamma': 3.227448623913705}. Best is trial 1 with value: 0.6960756191216659.
+[I 2026-02-23 02:08:42,730] Trial 4 finished with value: 0.6944030305746065 and parameters: {'learning_rate': 0.022196938540061075, 'max_depth': 8, 'min_child_weight': 8, 'subsample': 0.6796434604197376, 'colsample_bytree': 0.8388109085896713, 'gamma': 0.6939092549242326}. Best is trial 1 with value: 0.6960756191216659.
+[I 2026-02-23 02:08:42,763] Trial 5 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:42,803] Trial 6 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:42,836] Trial 7 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:42,868] Trial 8 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:42,899] Trial 9 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:42,934] Trial 10 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:42,979] Trial 11 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:43,018] Trial 12 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:43,056] Trial 13 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:43,092] Trial 14 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:43,129] Trial 15 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:43,169] Trial 16 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:43,205] Trial 17 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:43,251] Trial 18 pruned. Trial was pruned at iteration 1.
+[I 2026-02-23 02:08:43,286] Trial 19 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:43,351] Trial 20 pruned. Trial was pruned at iteration 2.
+[I 2026-02-23 02:08:43,759] Trial 21 finished with value: 0.6943542937362426 and parameters: {'learning_rate': 0.030502831826987736, 'max_depth': 9, 'min_child_weight': 10, 'subsample': 0.7642786575280504, 'colsample_bytree': 0.9128864775712949, 'gamma': 3.206509169418609}. Best is trial 1 with value: 0.6960756191216659.
+[I 2026-02-23 02:08:43,794] Trial 22 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:43,835] Trial 23 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:43,870] Trial 24 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:44,162] Trial 25 finished with value: 0.6939954547943084 and parameters: {'learning_rate': 0.062292326598939435, 'max_depth': 8, 'min_child_weight': 9, 'subsample': 0.7011872170767689, 'colsample_bytree': 0.8100924226463511, 'gamma': 1.2910778714416704}. Best is trial 1 with value: 0.6960756191216659.
+[I 2026-02-23 02:08:44,553] Trial 26 finished with value: 0.6939508994629461 and parameters: {'learning_rate': 0.04403830913860936, 'max_depth': 9, 'min_child_weight': 10, 'subsample': 0.7526165616058321, 'colsample_bytree': 0.7614289625859482, 'gamma': 3.009759835527365}. Best is trial 1 with value: 0.6960756191216659.
+[I 2026-02-23 02:08:44,586] Trial 27 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:44,619] Trial 28 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:44,664] Trial 29 pruned. Trial was pruned at iteration 1.
+[I 2026-02-23 02:08:44,697] Trial 30 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:44,738] Trial 31 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:44,789] Trial 32 pruned. Trial was pruned at iteration 1.
+[I 2026-02-23 02:08:44,829] Trial 33 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:44,881] Trial 34 pruned. Trial was pruned at iteration 1.
+[I 2026-02-23 02:08:44,932] Trial 35 pruned. Trial was pruned at iteration 1.
+[I 2026-02-23 02:08:44,968] Trial 36 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:45,013] Trial 37 pruned. Trial was pruned at iteration 1.
+[I 2026-02-23 02:08:45,050] Trial 38 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:45,085] Trial 39 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:45,813] Trial 40 finished with value: 0.6954402120521477 and parameters: {'learning_rate': 0.10526908998129315, 'max_depth': 9, 'min_child_weight': 6, 'subsample': 0.6947904981610067, 'colsample_bytree': 0.9220077211797951, 'gamma': 0.9591813118342707}. Best is trial 1 with value: 0.6960756191216659.
+[I 2026-02-23 02:08:46,583] Trial 41 finished with value: 0.6954311546023533 and parameters: {'learning_rate': 0.10149005546141329, 'max_depth': 9, 'min_child_weight': 6, 'subsample': 0.6971885979873716, 'colsample_bytree': 0.919788185220163, 'gamma': 1.01187985960852}. Best is trial 1 with value: 0.6960756191216659.
+[I 2026-02-23 02:08:46,633] Trial 42 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:47,221] Trial 43 finished with value: 0.6958982485843398 and parameters: {'learning_rate': 0.1276943560495354, 'max_depth': 8, 'min_child_weight': 6, 'subsample': 0.6991907994387266, 'colsample_bytree': 0.9959603796335464, 'gamma': 0.5953794314728965}. Best is trial 1 with value: 0.6960756191216659.
+[I 2026-02-23 02:08:47,851] Trial 44 finished with value: 0.6956668284129761 and parameters: {'learning_rate': 0.1302886206793242, 'max_depth': 8, 'min_child_weight': 6, 'subsample': 0.6923596806813349, 'colsample_bytree': 0.9600970867767924, 'gamma': 1.4913202045717475}. Best is trial 1 with value: 0.6960756191216659.
+[I 2026-02-23 02:08:47,898] Trial 45 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:47,944] Trial 46 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:47,986] Trial 47 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:48,040] Trial 48 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:48,075] Trial 49 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:48,111] Trial 50 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:48,149] Trial 51 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:48,190] Trial 52 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:48,227] Trial 53 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:48,264] Trial 54 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:48,308] Trial 55 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:48,347] Trial 56 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:48,391] Trial 57 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:48,428] Trial 58 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:48,464] Trial 59 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:48,510] Trial 60 pruned. Trial was pruned at iteration 1.
+[I 2026-02-23 02:08:48,562] Trial 61 pruned. Trial was pruned at iteration 1.
+[I 2026-02-23 02:08:48,606] Trial 62 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:48,658] Trial 63 pruned. Trial was pruned at iteration 1.
+[I 2026-02-23 02:08:48,703] Trial 64 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:48,744] Trial 65 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:48,786] Trial 66 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:48,826] Trial 67 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:48,868] Trial 68 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:48,908] Trial 69 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:49,271] Trial 70 pruned. Trial was pruned at iteration 35.
+[I 2026-02-23 02:08:49,314] Trial 71 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:49,356] Trial 72 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:49,397] Trial 73 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:49,435] Trial 74 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:49,486] Trial 75 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:49,533] Trial 76 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:49,572] Trial 77 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:49,613] Trial 78 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:49,649] Trial 79 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:49,682] Trial 80 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:49,720] Trial 81 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:49,758] Trial 82 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:49,799] Trial 83 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:49,835] Trial 84 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:49,873] Trial 85 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:49,914] Trial 86 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:49,954] Trial 87 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:49,995] Trial 88 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:50,033] Trial 89 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:50,070] Trial 90 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:50,130] Trial 91 pruned. Trial was pruned at iteration 3.
+[I 2026-02-23 02:08:50,172] Trial 92 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:50,216] Trial 93 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:50,256] Trial 94 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:50,302] Trial 95 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:50,341] Trial 96 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:50,384] Trial 97 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:50,424] Trial 98 pruned. Trial was pruned at iteration 0.
+[I 2026-02-23 02:08:50,467] Trial 99 pruned. Trial was pruned at iteration 0.
+
+Tuning completed.
+Hyperparameters saved to: best_params_icu.json
+
+Training...
+[0]     train-auc:0.80094       train-aucpr:0.64969     tune-auc:0.79666        tune-aucpr:0.64146
+[50]    train-auc:0.82838       train-aucpr:0.68802     tune-auc:0.82349        tune-aucpr:0.68084
+[100]   train-auc:0.83337       train-aucpr:0.69724     tune-auc:0.82812        tune-aucpr:0.68955
+[150]   train-auc:0.83473       train-aucpr:0.70030     tune-auc:0.82920        tune-aucpr:0.69248
+[200]   train-auc:0.83541       train-aucpr:0.70179     tune-auc:0.82979        tune-aucpr:0.69379
+[250]   train-auc:0.83589       train-aucpr:0.70280     tune-auc:0.83019        tune-aucpr:0.69476
+[300]   train-auc:0.83622       train-aucpr:0.70337     tune-auc:0.83041        tune-aucpr:0.69521
+[350]   train-auc:0.83648       train-aucpr:0.70392     tune-auc:0.83054        tune-aucpr:0.69565
+[400]   train-auc:0.83668       train-aucpr:0.70428     tune-auc:0.83061        tune-aucpr:0.69591
+[450]   train-auc:0.83687       train-aucpr:0.70457     tune-auc:0.83063        tune-aucpr:0.69602
+[500]   train-auc:0.83702       train-aucpr:0.70479     tune-auc:0.83063        tune-aucpr:0.69608
+[550]   train-auc:0.83718       train-aucpr:0.70500     tune-auc:0.83066        tune-aucpr:0.69615
+[600]   train-auc:0.83732       train-aucpr:0.70518     tune-auc:0.83069        tune-aucpr:0.69616
+[647]   train-auc:0.83745       train-aucpr:0.70536     tune-auc:0.83066        tune-aucpr:0.69613
+
+==================================================
+TEST SET EVALUATION
+==================================================
+AUROC: 0.8323
+AUPRC:  0.6892
+--------------------------------------------------
+Classification Report:
+              precision    recall  f1-score   support
+
+  No AKI (0)       0.88      0.83      0.85    613581
+     AKI (1)       0.57      0.67      0.62    211786
+
+    accuracy                           0.79    825367
+   macro avg       0.72      0.75      0.73    825367
+weighted avg       0.80      0.79      0.79    825367
+
+--------------------------------------------------
+Confusion Matrix:
+True No AKI (TN): 506671 | Misclassified as AKI (FP): 106910
+Missed AKI  (FN): 70040 | Successfully predicted (TP): 141746
+==================================================
+
+Done.
+(Iteration 647) Parameters saved to: xgboost_icu_best_model_iter647.json
